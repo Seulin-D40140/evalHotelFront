@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light shadow-sm">
+    <div class="container-fluid rounded" style="background-color: rgb(211, 255, 216);">
+        <a href="#" class="navbar-brand"routerLink="/home" ><span style="font-size: 3rem; color: red;">Hotel</span>.com</a>
+        <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+            <li class="navbar-item">
+            <a class="nav-link" routerLink="/cart">
+                <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                </a>
+            </li>
+            <li class="navbar-item">
+                <a class="nav-link"></a>
+            </li>
+            <li class="navbar-item">
+                <a href="#" class="nav-link" routerLink="/training">Ajouter Ville</a>
+            </li>
+            <li class="navbar-item">
+                <a href="#" class="nav-link" routerLink="/admin">Ajout Hotel</a>
+            </li>
+            <li class="navbar-item">
+                <a href="#" class="nav-link" routerLink="/admin">Partie Gerant</a>
+            </li>
+        </ul>
+        </div>
+        <div class="navbar-nav">
+            <label class="nav-link" for="username">Bonjour,</label>
+            <a class="nav-link" routerLink="/login">
+            <i class="fa-solid fa-arrow-right-from-bracket fa-xl"></i>
+            <ng-template #logout>
+                <i class="fa-solid fa-arrow-right-to-bracket fa-xl"></i>
+            </ng-template>
+            </a>
+        </div>
+    </div>
+</nav>

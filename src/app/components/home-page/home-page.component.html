@@ -1,11 +1,47 @@
 <div>
-    <div *ngFor="let city of listCitys">
-        {{city.name}}
+    <div>
+        <div class="d-flex" style="background-color: rgba(214, 252, 218, 0.267);">
+            <p class="ml-3">recherche : </p>       
+            <div class="form-group w-25 p-3 d-flex justify-content-center">
+                <form [formGroup]="cityForm" (ngSubmit)="onSubmit()">
+                    <label class="control-label">par ville :</label>
+                    <div class="d-flex">
+                        <select class="form-control" formControlName="city">
+                            <option *ngFor="let city of listCitys" [value]="city.id">{{ city.name }}</option>
+                        </select>
+                        <button type="submit" class="btn btn-success ml-2">Recherche</button>
+                    </div>
+                </form>
+            </div>
+            <form (ngSubmit)="searchByKey()" #keywordForm="ngForm" class="pl-3" class="p-3">
+                <label for="keyword">nom par Keyword : </label><br>
+                <div class="d-flex">
+                    <input type="text" id="keyword" name="keyword" [(ngModel)]="keyword" class="form-control">
+                    <button type="submit" class="btn btn-success ml-2">Search</button>
+                </div>
+            </form>
+        </div>
+    
+        <div class=" h-100 row mx-4 justify-content-center mt-2">
+            <div class="btn card shadow col-3 p-3 mr-3 mb-3 h-75" *ngFor="let hotel of listHotels" style="background-color: rgb(250, 250, 250);" (click)="onHotelDetail(hotel)">
+                <div class="img d-flex justify-content-center">
+                    <a class="btn"><img [src]="URLStr + '/photo/' + hotel.id" alt="{{hotel.name}} image" class="img-fluid" style="max-height: 10rem;"></a>
+                </div>
+                <ul >
+                    <li class="nav">nom : {{hotel.name}}</li>
+                    <li class="nav">prix : {{hotel.price}}€ la nuit/personne</li>
+                    <li class="nav">nombre de place : {{hotel.nbPlace}}</li>
+                </ul>
+            </div>
+        </div>
+        <ul class="nav nav-pills">
+            <li th:class="${currentPage == status.index}?'active':''" th:each="page, status:${pages}">
+                <a th:href = "@{/index(page=${status.index}, keyword=${keyword})}" th:text="${status.index}"></a>
+            </li>
+        </ul>
     </div>
+<ng-template #loading>
+    <div>loading...</div>
+</ng-template>
 </div>
 
-<div>
-    <div *ngFor="let hotel of listHotels">
-        {{hotel.name}}
-    </div>
-</div>

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/comm
 import { environment } from 'src/environments/environment';
 import { Hotel } from '../Models/Hotel.model';
 import { City } from '../Models/City.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -14,5 +15,11 @@ export class ApiServiceService
 	public getAllHotels() { return this.http.get<Hotel[]> (environment.host + "/hotels") }
 
 	public getAllCitys() { return this.http.get<City[]> (environment.host + "/citys") }
+
+	public getHotelsByCategory(id : number) { return this.http.get<Hotel[]> (environment.host + "/hotelByCity/" + id) }
+
+	public searchByKeyword( key : string) { return this.http.get<Hotel[]> (environment.host + "/searchByKey/" + key) }
+
+	public getHotel(id : number){ return this.http.get<Hotel> (environment.host + "/hotelById/" + id) }
 
 }
