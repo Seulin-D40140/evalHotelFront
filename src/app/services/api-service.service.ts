@@ -43,6 +43,11 @@ export class ApiServiceService
 		return this.http.post<Hotel>(environment.host + "/hotels", hotel);
 	}
 
+	public addNewCity(city : City)
+	{
+		return this.http.post<City>(environment.host + "/city", city);
+	}
+
 	public changePicture(hotelId : number , file : FormData){
 		return this.http.post<any>(environment.host + "/photo/" + hotelId  , file);
 	}
