@@ -32,6 +32,20 @@ export class ApiServiceService
 				.set('password', password);
 		return this.http.post<any>(environment.auth + "/login", body, {headers, observe : 'response'});
 	}
+
+	public getCityById(id: number)
+	{
+		return this.http.get<City>(environment.host + "/cityid/"+id);
+	}
+
+	public addNewHotel( hotel : Hotel)
+	{
+		return this.http.post<Hotel>(environment.host + "/hotels", hotel);
+	}
+
+	public changePicture(hotelId : number , file : FormData){
+		return this.http.post<any>(environment.host + "/photo/" + hotelId  , file);
+	}
 }
 
 

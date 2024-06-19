@@ -11,6 +11,8 @@ import { DetailHotelComponent } from './components/detail-hotel/detail-hotel.com
 import { LoginComponent } from './components/login/login.component';
 import { JwtInterceptorInterceptor } from 'src/jwt-interceptor.interceptor';
 import { UnauthorizeAccesComponent } from './components/unauthorize-acces/unauthorize-acces.component';
+import { AddCityFormComponent } from './components/add-city-form/add-city-form.component';
+import { AddHotelFormComponent } from './components/add-hotel-form/add-hotel-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { UnauthorizeAccesComponent } from './components/unauthorize-acces/unauth
     NavbarComponent,
     DetailHotelComponent,
     LoginComponent,
-    UnauthorizeAccesComponent
+    UnauthorizeAccesComponent,
+    AddCityFormComponent,
+    AddHotelFormComponent
   ],
   imports: [
     BrowserModule,
