@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="card mt-4" style="max-width: 300px;">
+        <div class="card-header">Authentification</div>
+        <div *ngIf="!connected else disconnected">
+            <div class="card-body">
+                <form [formGroup]="userForm" (ngSubmit)="onLogin(userForm)">
+                    <div class="m-2">
+                        <label for="username">Username : </label>
+                        <input type="username" formControlName="username" class="form-control" name="username">
+                        <div *ngIf="userForm.controls['username'].invalid && (userForm.controls['username'].dirty || userForm.controls['username'].touched)" class="alert text-danger">
+                            <div *ngIf="userForm.controls['username'].errors?.['required']">Le username est requis</div>
+                        </div>
+                    </div>
+                    <div class="m-2">
+                        <label for="password">Mot de passe : </label>
+                        <input type="password" formControlName="password" class="form-control" name="password">
+                        <div *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].dirty || userForm.controls['password'].touched)" class="alert text-danger">
+                            <div *ngIf="password && password.errors?.['required']">Le mot de passe est requis</div>
+                            <div *ngIf="password && password.errors?.['pattern']">Saisissez un mot de passe valide</div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary m-2" >Se connecter</button>
+                        <div class="text-danger">{{error}}</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <ng-template #disconnected>
+            <label for="username" style="margin-left:20px; margin-top:10px; margin-bottom: 10px;">{{this.authService.getUsername()}}</label>
+            <div >
+                <a class="btn btn-primary" (click)="disconnect()"> Deconnexion </a>
+            </div>
+        </ng-template>
+    </div>
+</div>

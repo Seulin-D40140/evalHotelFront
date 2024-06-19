@@ -22,4 +22,16 @@ export class ApiServiceService
 
 	public getHotel(id : number){ return this.http.get<Hotel> (environment.host + "/hotelById/" + id) }
 
+	public getLoginByUsernamePassword(username : string, password : string)
+	{
+		const headers = new HttpHeaders({
+		'Content-Type' : 'application/x-www-form-urlencoded'
+		})
+		const body = new HttpParams()
+				.set('username', username)
+				.set('password', password);
+		return this.http.post<any>(environment.auth + "/login", body, {headers, observe : 'response'});
+	}
 }
+
+
