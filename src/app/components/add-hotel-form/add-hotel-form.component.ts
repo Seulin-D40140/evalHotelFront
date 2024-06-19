@@ -57,7 +57,7 @@ export class AddHotelFormComponent implements OnInit {
       address : ['', [Validators.required]],
 			price : ['', [Validators.required]],
 			city : ['', Validators.required],
-			imageNam: [''],
+			imageNam: [null],
 			place : [1]
 		});
 		if(this.isUpdateForm)
@@ -73,7 +73,7 @@ export class AddHotelFormComponent implements OnInit {
 						name : data.name,
 						description : data.description,
 						price : data.price,
-						category : data.city,
+						city : data.city,
             address : data.address,
 						place : data.nbPlace
 					})
@@ -121,7 +121,7 @@ export class AddHotelFormComponent implements OnInit {
 			complete : () => {
 				if(this.catById != null && form.valid)
 				{
-					let hotel = new Hotel(form.value.id , form.value.name , form.value.description , form.value.address , form.value.price , form.value.nbPlace , "default.png" , this.catById)
+					let hotel = new Hotel(form.value.id , form.value.name , form.value.description , form.value.address , form.value.price , form.value.place , "default.png" , this.catById)
 					
 					this.apiService.addNewHotel(hotel).subscribe({
 						next:(data) => { this.changePicture(data.id); },
