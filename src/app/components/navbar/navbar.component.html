@@ -15,12 +15,12 @@
         </ul>
         </div>
         <div class="navbar-nav">
-            <label class="nav-link" for="username" routerLink="/login">login</label>
+            <label class="nav-link" for="username" *ngIf="this.authService.getUsername()" routerLink="/login"><span style="color: blue;">*[{{this.authService.getRoles()}}]*</span> Bonjour, {{this.authService.getUsername()}}</label>
             <a class="nav-link" routerLink="/login">
-            <i class="fa-solid fa-arrow-right-from-bracket fa-xl"></i>
-            <ng-template #logout>
-                <i class="fa-solid fa-arrow-right-to-bracket fa-xl"></i>
-            </ng-template>
+              <i class="fa-solid fa-arrow-right-from-bracket fa-xl" *ngIf="this.authService.isConnected() else logout"></i>
+                <ng-template #logout>
+                    <i class="fa-solid fa-arrow-right-to-bracket fa-xl">login</i>
+                </ng-template>
             </a>
         </div>
     </div>
