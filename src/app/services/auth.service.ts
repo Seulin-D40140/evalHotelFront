@@ -68,6 +68,14 @@ export class AuthService {
     return false;
   }
 
+  isGerant() : boolean{
+    let role = this.getRoles();
+    if(role && role?.length > 0){
+      if(role.includes("GERANT")) return true;
+    }
+    return false;
+  }
+
   /**
    * Fonction pour vérifier que le rôle de l'utilisateur
    * @returns vrai si l'utilisateur a le rôle User

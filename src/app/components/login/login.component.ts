@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error : () => this.error = "Username ou password erroné",
-        complete : () => console.log('welcome')
+        complete : () => this.router.navigateByUrl("home")
       });
     } else {
       this.error = 'Veuillez remplir les champs';
@@ -85,6 +85,6 @@ export class LoginComponent implements OnInit {
   disconnect() {
     this.authService.disconnected();
     this.connected = false;
-    this.router.navigateByUrl("trainings");
+    this.router.navigateByUrl("home");
   }
 }

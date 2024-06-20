@@ -23,15 +23,18 @@
         </div>
     
         <div class=" h-100 row mx-4 justify-content-center mt-2">
-            <div class="btn card shadow col-3 p-3 mr-3 mb-3 h-75" *ngFor="let hotel of listHotels" style="background-color: rgb(250, 250, 250);" (click)="onHotelDetail(hotel)">
+            <div class="btn card shadow col-3 p-3 mr-3 mb-3 h-75" *ngFor="let hotel of listHotels" style="background-color: rgb(250, 250, 250);">
                 <div class="img d-flex justify-content-center">
-                    <a class="btn"><img [src]="URLStr + '/photo/' + hotel.id" alt="{{hotel.name}} image" class="img-fluid" style="max-height: 10rem;"></a>
+                    <a class="btn"><img [src]="URLStr + '/photo/' + hotel.id" alt="{{hotel.name}} image" class="img-fluid rounded" style="max-height: 10rem;" (click)="onHotelDetail(hotel)"></a>
                 </div>
                 <ul >
                     <li class="nav">nom : {{hotel.name}}</li>
                     <li class="nav">prix : {{hotel.price}}€ la nuit/personne</li>
                     <li class="nav">nombre de place : {{hotel.nbPlace}}</li>
                 </ul>
+                <div class="d-flex justify-content-end mt-3" *ngIf="this.authService.isAdmin()">
+                    <button  type="button" class="btn btn-danger mx-2" (click)="onDeleteHotel(hotel.id)">Supprimer</button>
+                </div>
             </div>
         </div>
         <ul class="nav nav-pills">

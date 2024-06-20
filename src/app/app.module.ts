@@ -13,6 +13,7 @@ import { JwtInterceptorInterceptor } from 'src/jwt-interceptor.interceptor';
 import { UnauthorizeAccesComponent } from './components/unauthorize-acces/unauthorize-acces.component';
 import { AddCityFormComponent } from './components/add-city-form/add-city-form.component';
 import { AddHotelFormComponent } from './components/add-hotel-form/add-hotel-form.component';
+import { GerantPartComponent } from './components/gerant-part/gerant-part.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddHotelFormComponent } from './components/add-hotel-form/add-hotel-for
     LoginComponent,
     UnauthorizeAccesComponent,
     AddCityFormComponent,
-    AddHotelFormComponent
+    AddHotelFormComponent,
+    GerantPartComponent
   ],
   imports: [
     BrowserModule,

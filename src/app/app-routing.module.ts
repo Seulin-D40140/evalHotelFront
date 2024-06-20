@@ -6,6 +6,8 @@ import { LoginComponent } from './components/login/login.component';
 import { UnauthorizeAccesComponent } from './components/unauthorize-acces/unauthorize-acces.component';
 import { AddCityFormComponent } from './components/add-city-form/add-city-form.component';
 import { AddHotelFormComponent } from './components/add-hotel-form/add-hotel-form.component';
+import { AdminGuard } from './guards/admin-guard.guard';
+import { GerantPartComponent } from './components/gerant-part/gerant-part.component';
 
 const routes: Routes = 
 [
@@ -13,8 +15,9 @@ const routes: Routes =
 	{path : 'details/:id', component : DetailHotelComponent },
 	{path : 'login' , component : LoginComponent},
 	{path : '403', component : UnauthorizeAccesComponent},
-	{path : 'cityForm', component : AddCityFormComponent},
-	{path : 'hotelForm', component : AddHotelFormComponent}
+	{path : 'cityForm', component : AddCityFormComponent , canActivate : [AdminGuard]},
+	{path : 'hotelForm', component : AddHotelFormComponent , canActivate : [AdminGuard]},
+	{path : 'gerantPart' , component : GerantPartComponent},
 ];
 
 @NgModule({

@@ -11,8 +11,8 @@
             <div>
                 <label for="price">Code postal :</label>
                 <input type="text" required formControlName="postalCode" class="form-control" name="postalCode">
-                <div *ngIf="price && price.invalid && (price.dirty || price.touched)" class="alert text-danger" role="alert">
-                    <div *ngIf="price.errors?.['required']">Le cp est requis</div>
+                <div *ngIf="postaCode && postaCode.invalid && (postaCode.dirty || postaCode.touched)" class="alert text-danger" role="alert">
+                    <div *ngIf="postaCode.errors?.['required']">Le cp est requis</div>
                 </div>
             </div>
             <div>

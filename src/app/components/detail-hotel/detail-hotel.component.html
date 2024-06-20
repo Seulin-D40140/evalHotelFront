@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3" *ngIf="!this.authService.isAdmin()">
     <div class="card">
         <div class="d-flex justify-content-between m-5">
             <ul>
@@ -13,5 +13,73 @@
                 <a class="btn"><img [src]="URLStr + '/photo/' + hotel?.id" alt="{{hotel?.name}} image" class="img-fluid rounded"></a>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="this.authService.isAdmin()">
+    <div class="rounded-lg shadow-lg mx-auto mt-5">
+        <form [formGroup]="trainingForm" (ngSubmit)="onSubmit(trainingForm)" class="d-flex justify-content-around">
+            <div class="m-5">
+                <div>
+                    <label for="name">Nom :</label>
+                    <input type="text" required formControlName="name" class="form-control" name="name">
+                    <div *ngIf="name && name.invalid && (name.dirty || name.touched)" class="alert text-danger" role="alert">
+                        <div *ngIf="name.errors?.['required']">Le nom est requis</div>
+                    </div>
+                </div>
+                <div>
+                    <label for="description">Description :</label>
+                    <input type="text" required formControlName="description" class="form-control" name="description">
+                    <div *ngIf="description && description.invalid && (description.dirty || description.touched)" class="alert text-danger" role="alert">
+                        <div *ngIf="description.errors?.['required']">La description est requise</div>
+                    </div>
+                </div>
+                <div>
+                    <label for="price">Prix :</label>
+                    <input type="text" required formControlName="price" class="form-control" name="price">
+                    <div *ngIf="price && price.invalid && (price.dirty || price.touched)" class="alert text-danger" role="alert">
+                        <div *ngIf="price.errors?.['required']">Le prix est requis</div>
+                    </div>
+                </div>
+                <div>
+                    <label for="place">Nb de places :</label>
+                    <input type="text" required formControlName="place" class="form-control" name="place">
+                    <div *ngIf="description && description.invalid && (description.dirty || description.touched)" class="alert text-danger" role="alert">
+                        <div *ngIf="description.errors?.['required']">La description est requise</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Ville :</label>
+                    <select class="form-control" formControlName="city" name="city">
+                        <option *ngFor="let city of listCity" [value]="city.id" >{{ city.name }}</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="address">address :</label>
+                    <input type="text" required formControlName="address" class="form-control" name="address">
+                    <div *ngIf="description && description.invalid && (description.dirty || description.touched)" class="alert text-danger" role="alert">
+                        <div *ngIf="description.errors?.['required']">La description est requise</div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <div>
+                    <div *ngIf="isUpdateForm">
+                        <label for="fileInput">Image actuel :</label>
+                        <div class="img d-flex justify-content-center">
+                            <img [src]="URLStr + '/photo/' + imageNam" class="img-fluid w-100">
+                        </div>
+                    </div>
+                    <label for="fileInput">Choisissez une nouvelle image : (optional) </label>
+                    <input type="file" formControlName="imageNam" class="custom-file" id="fileInput" accept="image/*" name="file" (change)="onPictureSelect($event)">
+                </div>
+                <div *ngIf="isUpdateForm else createTraining">
+                    <button type="submit" class="btn btn-primary m-2">Modifier</button>
+                </div>
+                <ng-template #createTraining>
+                    <button type="submit" class="btn btn-primary m-2">Ajouter</button>
+                </ng-template>
+            </div>
+        </form>
     </div>
 </div>

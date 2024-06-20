@@ -51,6 +51,10 @@ export class ApiServiceService
 	public changePicture(hotelId : number , file : FormData){
 		return this.http.post<any>(environment.host + "/photo/" + hotelId  , file);
 	}
+
+	public deleteHotel(id : number){
+		return this.http.get<Hotel>(environment.host + "/hotelDelete/" + id);
+	}
 }
 
 

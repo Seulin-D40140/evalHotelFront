@@ -3,27 +3,19 @@
         <a href="#" class="navbar-brand"routerLink="/home" ><span style="font-size: 3rem; color: red;">Hotel</span>.com</a>
         <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
-            <li class="navbar-item">
-            <a class="nav-link" routerLink="/cart">
-                <i class="fa-solid fa-cart-shopping fa-xl"></i>
-                </a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link"></a>
-            </li>
-            <li class="navbar-item">
+            <li class="navbar-item" *ngIf="this.authService.isAdmin()">
                 <a href="#" class="nav-link" routerLink="/cityForm">Ajouter Ville</a>
             </li>
-            <li class="navbar-item">
+            <li class="navbar-item" *ngIf="this.authService.isAdmin()">
                 <a href="#" class="nav-link" routerLink="/hotelForm">Ajout Hotel</a>
             </li>
-            <li class="navbar-item">
-                <a href="#" class="nav-link" routerLink="/admin">Partie Gerant</a>
+            <li class="navbar-item" *ngIf="this.authService.isGerant()">
+                <a href="#" class="nav-link" routerLink="/gerantPart">Partie Gerant</a>
             </li>
         </ul>
         </div>
         <div class="navbar-nav">
-            <label class="nav-link" for="username" routerLink="/login">Bonjour,</label>
+            <label class="nav-link" for="username" routerLink="/login">login</label>
             <a class="nav-link" routerLink="/login">
             <i class="fa-solid fa-arrow-right-from-bracket fa-xl"></i>
             <ng-template #logout>

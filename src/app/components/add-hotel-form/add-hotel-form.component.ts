@@ -7,9 +7,9 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-add-hotel-form',
-  templateUrl: './add-hotel-form.component.html',
-  styleUrls: ['./add-hotel-form.component.css']
+	selector: 'app-add-hotel-form',
+	templateUrl: './add-hotel-form.component.html',
+	styleUrls: ['./add-hotel-form.component.css']
 })
 export class AddHotelFormComponent implements OnInit {
 
@@ -54,7 +54,7 @@ export class AddHotelFormComponent implements OnInit {
 			id : [trainingId ? trainingId : ''],
 			name : ['', [Validators.required]],
 			description : ['', [Validators.required]],
-      address : ['', [Validators.required]],
+			address : ['', [Validators.required]],
 			price : ['', [Validators.required]],
 			city : ['', Validators.required],
 			imageNam: [null],
@@ -74,7 +74,7 @@ export class AddHotelFormComponent implements OnInit {
 						description : data.description,
 						price : data.price,
 						city : data.city,
-            address : data.address,
+						address : data.address,
 						place : data.nbPlace
 					})
 				}

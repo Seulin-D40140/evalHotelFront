@@ -4,28 +4,22 @@ import { Router } from '@angular/router';
 import { City } from 'src/app/Models/City.model';
 import { Hotel } from 'src/app/Models/Hotel.model';
 import { ApiServiceService } from 'src/app/services/api-service.service';
-import { AuthService } from 'src/app/services/auth.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-	selector: 'app-home-page',
-	templateUrl: './home-page.component.html',
-	styleUrls: ['./home-page.component.css']
+	selector: 'app-gerant-part',
+	templateUrl: './gerant-part.component.html',
+	styleUrls: ['./gerant-part.component.css']
 })
-export class HomePageComponent implements OnInit {
-
+export class GerantPartComponent implements OnInit {
 	error: any;
-	deleteError : any;
-	deteteTrainId : number | null = null;
 	listHotels : Hotel[] = [];
 	listCitys : City[] = [];
 	cityForm! : FormGroup;
 	URLStr : string = '';
 	keyword :string = '';
 
-	constructor(private apiService : ApiServiceService , private router : Router,
-				public authService : AuthService
-	) {}
+	constructor(private apiService : ApiServiceService , private router : Router) {}
 
 	ngOnInit(): void 
 	{
@@ -90,17 +84,5 @@ export class HomePageComponent implements OnInit {
 	onHotelDetail(hotel : Hotel)
 	{
 		this.router.navigate(['/details', hotel.id]);
-	}
-
-	onDeleteHotel(id : number)
-	{
-		console.log(id)
-		if(confirm('Voulez-vous supprimer la formation ' + id + ' ?'))
-		{
-			this.apiService.deleteHotel(id).subscribe({
-				error : (err) => this.deleteError = err,
-				complete : () => {this.getAllHotels()}
-			});
-		}
 	}
 }
